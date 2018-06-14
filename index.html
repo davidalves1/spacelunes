@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet">
+    <title>Space Lunes</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: block;
+            height: 100vh;
+            width: 100%;
+            background-color: #4e2e7d;
+            color: #fff;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .message {
+            padding-top: 0.1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 100; 
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 100;
+            line-height: 2rem;
+        }
+
+        .green {
+          color: #2d2;
+          margin-left: -12px;
+        }
+
+        input[type="text"] {
+          height: 2rem;
+          width: 80%;
+          margin-bottom: 1rem;
+          padding: 0 10px;
+          font-size: .8rem;
+          color: #333;
+          border-radius: 5px;
+          box-shadow: 0px 0px 10px 0px rgba(51,51,51,0.75);
+          border: none;
+          text-align: center;
+        }
+
+        .btn {
+          height: 2rem;
+          width: 5rem;
+          background-color: #2d2;
+          transition: .3s ease;
+          border: none;
+          color: #fff;
+          border-radius: 5px;
+          font-size: .8rem;
+          cursor: pointer;
+        }
+
+        .btn:hover {
+          background-color: #1d1;
+        }
+
+        @media (min-width: 768px) {
+          h1 {
+              font-size: 5rem;
+          }
+
+          h3 {
+              font-size: 1.5rem;
+          }
+
+          .green {
+              margin-left: -18px;
+          }
+
+          input[type="text"] {
+            height: 2rem;
+            width: 30%;
+          }
+        }
+    </style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-80709808-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-80709808-3');
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="message">
+            <h1>
+                <br> Space Lun
+                <span class="green">e</span>s
+                <br> Full Node</h1>
+            <img src="https://github.com/Lunes-platform/lunes-purchase/raw/master/src/assets/icon-lunes.png" alt="Icon Lunes" width="45rem">
+            <!-- <h3>Leasing pool address:
+                <br>37noKra8zX26UhsWmXxbvEVFVz3Zsvg8Vkg</h3> -->
+        </div>
+        <div>
+            <h3>Block Explorer</h3>
+            <input type="text" id="txId" placeholder="Ex: pa03sjue71jSeRpqZn6xQGM3CVqGGsCdjkSK2is2098d">
+            <br>
+            <button id="btnExplorer" class="btn">Send</button>
+        </div>
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        const btnExplorer = document.querySelector('#btnExplorer');
+        const txId = document.querySelector('#txId');
+
+        btnExplorer.addEventListener('click', () => {
+            if (txId.value.length != 44) {
+              return swal("Ops..", "Invalid transaction ID", "error");
+            }
+
+            window.open(`https://blockexplorer.lunes.io/tx/${txId.value}`, '_blank');
+            txId.value = '';
+        });
+    </script>
+</body>
+
+</html>
